@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using Microsoft.EntityFrameworkCore;
 
 namespace Foundation.Models;
 
@@ -9,6 +10,11 @@ public class AppDbContext: DbContext
     public DbSet<Women_model> Women { get; set; }
     public DbSet<Alcohol_model> Alcohol { get; set; }
     public DbSet<Pet_model> Pet { get; set; }
+    public DbSet<Religion_model> Religion { get; set; }
+    public DbSet<Relationship_status_model> Relationship_status { get; set; }
+    public DbSet<Zodiac_sign_model> Zodiac_sign { get; set; }
+    public DbSet<Interest_model> Interest { get; set; }
+    public DbSet<Education_model> Education { get; set; }
 
     //public int Counter { get; set; }
 
@@ -59,6 +65,76 @@ public class AppDbContext: DbContext
             new Pet_model() { Pet_modelId = 2, Type = "Cat" },
             new Pet_model() { Pet_modelId = 3, Type = "Guinea pig" }
        );
+
+        modelBuilder.Entity<Smoking_model>().HasData
+       (
+            new Smoking_model() { Smoking_modelId = 1, Type = "Never" },
+            new Smoking_model() { Smoking_modelId = 2, Type = "Occasionally" },
+            new Smoking_model() { Smoking_modelId = 3, Type = "Often" },
+            new Smoking_model() { Smoking_modelId = 4, Type = "Daily" }
+       );
+
+        modelBuilder.Entity<Religion_model>().HasData
+       (
+            new Religion_model() { Religion_modelId = 1, Type = "Christianity" },
+            new Religion_model() { Religion_modelId = 2, Type = "Islam" },
+            new Religion_model() { Religion_modelId = 3, Type = "Hinduism" },
+            new Religion_model() { Religion_modelId = 4, Type = "Buddhism" }
+       );
+
+        modelBuilder.Entity<Relationship_status_model>().HasData
+       (
+            new Relationship_status_model() { Relationship_status_modelId = 1, Type = "Free" },
+            new Relationship_status_model() { Relationship_status_modelId = 2, Type = "Taken" },
+            new Relationship_status_model() { Relationship_status_modelId = 3, Type = "Other" }
+       );
+
+        modelBuilder.Entity<Zodiac_sign_model>().HasData
+       (
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 1, Type = "Aquarius" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 2, Type = "Pisces" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 3, Type = "Aries" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 4, Type = "Taurus" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 5, Type = "Gemini" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 6, Type = "Cancer" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 7, Type = "Leo" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 8, Type = "Virgo" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 9, Type = "Libra" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 10, Type = "Scorpio" },
+            new Zodiac_sign_model() { Zodiac_sign_modelId = 11, Type = "Capricorn" }
+       );
+
+        modelBuilder.Entity<Interest_model>().HasData
+       (
+            new Interest_model() { Interest_modelId = 1, Type = "Motorcycles" },
+            new Interest_model() { Interest_modelId = 2, Type = "Cars" },
+            new Interest_model() { Interest_modelId = 3, Type = "Music" },
+            new Interest_model() { Interest_modelId = 4, Type = "Food" },
+            new Interest_model() { Interest_modelId = 5, Type = "Computer games" },
+            new Interest_model() { Interest_modelId = 6, Type = "Animals" },
+            new Interest_model() { Interest_modelId = 7, Type = "Movies" },
+            new Interest_model() { Interest_modelId = 8, Type = "TV series" },
+            new Interest_model() { Interest_modelId = 9, Type = "Technology" },
+            new Interest_model() { Interest_modelId = 10, Type = "Traveling" },
+            new Interest_model() { Interest_modelId = 11, Type = "Cooking" },
+            new Interest_model() { Interest_modelId = 12, Type = "Reading" },
+            new Interest_model() { Interest_modelId = 13, Type = "Nature" }
+       );
+
+        modelBuilder.Entity<Education_model>().HasData
+       (
+            new Education_model() { Education_modelId = 1, Type = "Primary" },
+            new Education_model() { Education_modelId = 2, Type = "Secondary" },
+            new Education_model() { Education_modelId = 3, Type = "Higher" }
+       );
+
+
+
+
+
+
+
+
 
 
 

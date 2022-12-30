@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Foundation.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230201190720_test_1")]
+    [Migration("20230202200118_test_1")]
     partial class test1
     {
         /// <inheritdoc />
@@ -172,19 +172,139 @@ namespace Foundation.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Foundation.Models.Education_model", b =>
+                {
+                    b.Property<byte>("Education_modelId")
+                        .HasColumnType("tinyint")
+                        .HasColumnName("education_id");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("type");
+
+                    b.HasKey("Education_modelId");
+
+                    b.ToTable("Education");
+
+                    b.HasData(
+                        new
+                        {
+                            EducationmodelId = (byte)1,
+                            Type = "Primary"
+                        },
+                        new
+                        {
+                            EducationmodelId = (byte)2,
+                            Type = "Secondary"
+                        },
+                        new
+                        {
+                            EducationmodelId = (byte)3,
+                            Type = "Higher"
+                        });
+                });
+
+            modelBuilder.Entity("Foundation.Models.Interest_model", b =>
+                {
+                    b.Property<byte>("Interest_modelId")
+                        .HasColumnType("tinyint")
+                        .HasColumnName("interest_id");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("type");
+
+                    b.HasKey("Interest_modelId");
+
+                    b.ToTable("Interest");
+
+                    b.HasData(
+                        new
+                        {
+                            InterestmodelId = (byte)1,
+                            Type = "Motorcycles"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)2,
+                            Type = "Cars"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)3,
+                            Type = "Music"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)4,
+                            Type = "Food"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)5,
+                            Type = "Computer games"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)6,
+                            Type = "Animals"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)7,
+                            Type = "Movies"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)8,
+                            Type = "TV series"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)9,
+                            Type = "Technology"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)10,
+                            Type = "Traveling"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)11,
+                            Type = "Cooking"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)12,
+                            Type = "Reading"
+                        },
+                        new
+                        {
+                            InterestmodelId = (byte)13,
+                            Type = "Nature"
+                        });
+                });
+
             modelBuilder.Entity("Foundation.Models.Men_model", b =>
                 {
                     b.Property<int>("Men_modelId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("men_id");
+                        .HasColumnName("men_id")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Men_modelId"));
 
                     b.Property<int>("Age")
                         .HasMaxLength(3)
                         .HasColumnType("int")
-                        .HasColumnName("age");
+                        .HasColumnName("age")
+                        .HasColumnOrder(3);
 
                     b.Property<byte>("AlcoholId")
                         .HasMaxLength(2)
@@ -205,34 +325,40 @@ namespace Foundation.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)")
-                        .HasColumnName("first_name");
+                        .HasColumnName("first_name")
+                        .HasColumnOrder(1);
 
-                    b.Property<byte>("InterestFirstId")
+                    b.Property<byte?>("InterestFirstId")
                         .HasMaxLength(3)
                         .HasColumnType("tinyint")
-                        .HasColumnName("interest_1_id");
+                        .HasColumnName("interest_1_id")
+                        .HasColumnOrder(5);
 
-                    b.Property<byte>("InterestSecondId")
+                    b.Property<byte?>("InterestSecondId")
                         .HasMaxLength(3)
                         .HasColumnType("tinyint")
-                        .HasColumnName("interest_2_id");
+                        .HasColumnName("interest_2_id")
+                        .HasColumnOrder(6);
 
-                    b.Property<byte>("InterestThirdId")
+                    b.Property<byte?>("InterestThirdId")
                         .HasMaxLength(3)
                         .HasColumnType("tinyint")
-                        .HasColumnName("interest_3_id");
+                        .HasColumnName("interest_3_id")
+                        .HasColumnOrder(7);
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
-                        .HasColumnName("last_name");
+                        .HasColumnName("last_name")
+                        .HasColumnOrder(2);
 
                     b.Property<string>("Localization")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)")
-                        .HasColumnName("localization");
+                        .HasColumnName("localization")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("PetName")
                         .HasMaxLength(30)
@@ -270,7 +396,23 @@ namespace Foundation.Migrations
 
                     b.HasIndex("BusinessId");
 
+                    b.HasIndex("EducationId");
+
+                    b.HasIndex("InterestFirstId");
+
+                    b.HasIndex("InterestSecondId");
+
+                    b.HasIndex("InterestThirdId");
+
                     b.HasIndex("PetTypeId");
+
+                    b.HasIndex("RelationshipStatusId");
+
+                    b.HasIndex("ReligionId");
+
+                    b.HasIndex("SmokingId");
+
+                    b.HasIndex("ZodiacSignId");
 
                     b.ToTable("Men");
 
@@ -408,19 +550,133 @@ namespace Foundation.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Foundation.Models.Relationship_status_model", b =>
+                {
+                    b.Property<byte>("Relationship_status_modelId")
+                        .HasColumnType("tinyint")
+                        .HasColumnName("relationship_status_id");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("type");
+
+                    b.HasKey("Relationship_status_modelId");
+
+                    b.ToTable("Relationship_status");
+
+                    b.HasData(
+                        new
+                        {
+                            RelationshipstatusmodelId = (byte)1,
+                            Type = "Free"
+                        },
+                        new
+                        {
+                            RelationshipstatusmodelId = (byte)2,
+                            Type = "Taken"
+                        },
+                        new
+                        {
+                            RelationshipstatusmodelId = (byte)3,
+                            Type = "Other"
+                        });
+                });
+
+            modelBuilder.Entity("Foundation.Models.Religion_model", b =>
+                {
+                    b.Property<byte>("Religion_modelId")
+                        .HasColumnType("tinyint")
+                        .HasColumnName("religion_id");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("type");
+
+                    b.HasKey("Religion_modelId");
+
+                    b.ToTable("Religion");
+
+                    b.HasData(
+                        new
+                        {
+                            ReligionmodelId = (byte)1,
+                            Type = "Christianity"
+                        },
+                        new
+                        {
+                            ReligionmodelId = (byte)2,
+                            Type = "Islam"
+                        },
+                        new
+                        {
+                            ReligionmodelId = (byte)3,
+                            Type = "Hinduism"
+                        },
+                        new
+                        {
+                            ReligionmodelId = (byte)4,
+                            Type = "Buddhism"
+                        });
+                });
+
+            modelBuilder.Entity("Foundation.Models.Smoking_model", b =>
+                {
+                    b.Property<byte>("Smoking_modelId")
+                        .HasColumnType("tinyint")
+                        .HasColumnName("smoking_id");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("type");
+
+                    b.HasKey("Smoking_modelId");
+
+                    b.ToTable("Smoking");
+
+                    b.HasData(
+                        new
+                        {
+                            SmokingmodelId = (byte)1,
+                            Type = "Never"
+                        },
+                        new
+                        {
+                            SmokingmodelId = (byte)2,
+                            Type = "Occasionally"
+                        },
+                        new
+                        {
+                            SmokingmodelId = (byte)3,
+                            Type = "Often"
+                        },
+                        new
+                        {
+                            SmokingmodelId = (byte)4,
+                            Type = "Daily"
+                        });
+                });
+
             modelBuilder.Entity("Foundation.Models.Women_model", b =>
                 {
                     b.Property<int>("Women_modelId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("women_id");
+                        .HasColumnName("men_id")
+                        .HasColumnOrder(0);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Women_modelId"));
 
                     b.Property<int>("Age")
                         .HasMaxLength(3)
                         .HasColumnType("int")
-                        .HasColumnName("age");
+                        .HasColumnName("age")
+                        .HasColumnOrder(3);
 
                     b.Property<byte>("AlcoholId")
                         .HasMaxLength(2)
@@ -441,34 +697,40 @@ namespace Foundation.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)")
-                        .HasColumnName("first_name");
+                        .HasColumnName("first_name")
+                        .HasColumnOrder(1);
 
-                    b.Property<byte>("InterestFirstId")
+                    b.Property<byte?>("InterestFirstId")
                         .HasMaxLength(3)
                         .HasColumnType("tinyint")
-                        .HasColumnName("interest_1_id");
+                        .HasColumnName("interest_1_id")
+                        .HasColumnOrder(5);
 
-                    b.Property<byte>("InterestSecondId")
+                    b.Property<byte?>("InterestSecondId")
                         .HasMaxLength(3)
                         .HasColumnType("tinyint")
-                        .HasColumnName("interest_2_id");
+                        .HasColumnName("interest_2_id")
+                        .HasColumnOrder(6);
 
-                    b.Property<byte>("InterestThirdId")
+                    b.Property<byte?>("InterestThirdId")
                         .HasMaxLength(3)
                         .HasColumnType("tinyint")
-                        .HasColumnName("interest_3_id");
+                        .HasColumnName("interest_3_id")
+                        .HasColumnOrder(7);
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
-                        .HasColumnName("last_name");
+                        .HasColumnName("last_name")
+                        .HasColumnOrder(2);
 
                     b.Property<string>("Localization")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)")
-                        .HasColumnName("localization");
+                        .HasColumnName("localization")
+                        .HasColumnOrder(4);
 
                     b.Property<string>("PetName")
                         .HasMaxLength(30)
@@ -479,9 +741,6 @@ namespace Foundation.Migrations
                         .HasMaxLength(2)
                         .HasColumnType("tinyint")
                         .HasColumnName("pet_type_id");
-
-                    b.Property<byte?>("Pet_modelId")
-                        .HasColumnType("tinyint");
 
                     b.Property<byte>("RelationshipStatusId")
                         .HasMaxLength(3)
@@ -509,7 +768,23 @@ namespace Foundation.Migrations
 
                     b.HasIndex("BusinessId");
 
-                    b.HasIndex("Pet_modelId");
+                    b.HasIndex("EducationId");
+
+                    b.HasIndex("InterestFirstId");
+
+                    b.HasIndex("InterestSecondId");
+
+                    b.HasIndex("InterestThirdId");
+
+                    b.HasIndex("PetTypeId");
+
+                    b.HasIndex("RelationshipStatusId");
+
+                    b.HasIndex("ReligionId");
+
+                    b.HasIndex("SmokingId");
+
+                    b.HasIndex("ZodiacSignId");
 
                     b.ToTable("Women");
 
@@ -613,6 +888,80 @@ namespace Foundation.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Foundation.Models.Zodiac_sign_model", b =>
+                {
+                    b.Property<byte>("Zodiac_sign_modelId")
+                        .HasColumnType("tinyint")
+                        .HasColumnName("zodiac_sign_id");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("type");
+
+                    b.HasKey("Zodiac_sign_modelId");
+
+                    b.ToTable("Zodiac_sign");
+
+                    b.HasData(
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)1,
+                            Type = "Aquarius"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)2,
+                            Type = "Pisces"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)3,
+                            Type = "Aries"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)4,
+                            Type = "Taurus"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)5,
+                            Type = "Gemini"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)6,
+                            Type = "Cancer"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)7,
+                            Type = "Leo"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)8,
+                            Type = "Virgo"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)9,
+                            Type = "Libra"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)10,
+                            Type = "Scorpio"
+                        },
+                        new
+                        {
+                            ZodiacsignmodelId = (byte)11,
+                            Type = "Capricorn"
+                        });
+                });
+
             modelBuilder.Entity("Foundation.Models.Men_model", b =>
                 {
                     b.HasOne("Foundation.Models.Alcohol_model", "Alcohol_model")
@@ -625,15 +974,73 @@ namespace Foundation.Migrations
                         .WithMany("Men_model")
                         .HasForeignKey("BusinessId");
 
+                    b.HasOne("Foundation.Models.Education_model", "Education_model")
+                        .WithMany("Men_model")
+                        .HasForeignKey("EducationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Foundation.Models.Interest_model", "Interest_first_model")
+                        .WithMany("Men_first_models")
+                        .HasForeignKey("InterestFirstId");
+
+                    b.HasOne("Foundation.Models.Interest_model", "Interest_second_model")
+                        .WithMany("Men_second_models")
+                        .HasForeignKey("InterestSecondId");
+
+                    b.HasOne("Foundation.Models.Interest_model", "Interest_third_model")
+                        .WithMany("Men_third_models")
+                        .HasForeignKey("InterestThirdId");
+
                     b.HasOne("Foundation.Models.Pet_model", "Pet_model")
                         .WithMany("Men_model")
                         .HasForeignKey("PetTypeId");
+
+                    b.HasOne("Foundation.Models.Relationship_status_model", "Relationship_status_model")
+                        .WithMany("Men_model")
+                        .HasForeignKey("RelationshipStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Foundation.Models.Religion_model", "Religion_model")
+                        .WithMany("Men_model")
+                        .HasForeignKey("ReligionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Foundation.Models.Smoking_model", "Smoking_model")
+                        .WithMany("Men_model")
+                        .HasForeignKey("SmokingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Foundation.Models.Zodiac_sign_model", "Zodiac_sign_model")
+                        .WithMany("Men_model")
+                        .HasForeignKey("ZodiacSignId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Alcohol_model");
 
                     b.Navigation("Business_model");
 
+                    b.Navigation("Education_model");
+
+                    b.Navigation("Interest_first_model");
+
+                    b.Navigation("Interest_second_model");
+
+                    b.Navigation("Interest_third_model");
+
                     b.Navigation("Pet_model");
+
+                    b.Navigation("Relationship_status_model");
+
+                    b.Navigation("Religion_model");
+
+                    b.Navigation("Smoking_model");
+
+                    b.Navigation("Zodiac_sign_model");
                 });
 
             modelBuilder.Entity("Foundation.Models.Women_model", b =>
@@ -648,13 +1055,73 @@ namespace Foundation.Migrations
                         .WithMany("Women_model")
                         .HasForeignKey("BusinessId");
 
-                    b.HasOne("Foundation.Models.Pet_model", null)
+                    b.HasOne("Foundation.Models.Education_model", "Education_model")
                         .WithMany("Women_model")
-                        .HasForeignKey("Pet_modelId");
+                        .HasForeignKey("EducationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Foundation.Models.Interest_model", "Interest_first_model")
+                        .WithMany("Women_first_models")
+                        .HasForeignKey("InterestFirstId");
+
+                    b.HasOne("Foundation.Models.Interest_model", "Interest_second_model")
+                        .WithMany("Women_second_models")
+                        .HasForeignKey("InterestSecondId");
+
+                    b.HasOne("Foundation.Models.Interest_model", "Interest_third_model")
+                        .WithMany("Women_third_models")
+                        .HasForeignKey("InterestThirdId");
+
+                    b.HasOne("Foundation.Models.Pet_model", "Pet_model")
+                        .WithMany("Women_model")
+                        .HasForeignKey("PetTypeId");
+
+                    b.HasOne("Foundation.Models.Relationship_status_model", "Relationship_status_model")
+                        .WithMany("Women_model")
+                        .HasForeignKey("RelationshipStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Foundation.Models.Religion_model", "Religion_model")
+                        .WithMany("Women_model")
+                        .HasForeignKey("ReligionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Foundation.Models.Smoking_model", "Smoking_model")
+                        .WithMany("Women_model")
+                        .HasForeignKey("SmokingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Foundation.Models.Zodiac_sign_model", "Zodiac_sign_model")
+                        .WithMany("Women_model")
+                        .HasForeignKey("ZodiacSignId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Alcohol_model");
 
                     b.Navigation("Business_model");
+
+                    b.Navigation("Education_model");
+
+                    b.Navigation("Interest_first_model");
+
+                    b.Navigation("Interest_second_model");
+
+                    b.Navigation("Interest_third_model");
+
+                    b.Navigation("Pet_model");
+
+                    b.Navigation("Relationship_status_model");
+
+                    b.Navigation("Religion_model");
+
+                    b.Navigation("Smoking_model");
+
+                    b.Navigation("Zodiac_sign_model");
                 });
 
             modelBuilder.Entity("Foundation.Models.Alcohol_model", b =>
@@ -671,7 +1138,57 @@ namespace Foundation.Migrations
                     b.Navigation("Women_model");
                 });
 
+            modelBuilder.Entity("Foundation.Models.Education_model", b =>
+                {
+                    b.Navigation("Men_model");
+
+                    b.Navigation("Women_model");
+                });
+
+            modelBuilder.Entity("Foundation.Models.Interest_model", b =>
+                {
+                    b.Navigation("Men_first_models");
+
+                    b.Navigation("Men_second_models");
+
+                    b.Navigation("Men_third_models");
+
+                    b.Navigation("Women_first_models");
+
+                    b.Navigation("Women_second_models");
+
+                    b.Navigation("Women_third_models");
+                });
+
             modelBuilder.Entity("Foundation.Models.Pet_model", b =>
+                {
+                    b.Navigation("Men_model");
+
+                    b.Navigation("Women_model");
+                });
+
+            modelBuilder.Entity("Foundation.Models.Relationship_status_model", b =>
+                {
+                    b.Navigation("Men_model");
+
+                    b.Navigation("Women_model");
+                });
+
+            modelBuilder.Entity("Foundation.Models.Religion_model", b =>
+                {
+                    b.Navigation("Men_model");
+
+                    b.Navigation("Women_model");
+                });
+
+            modelBuilder.Entity("Foundation.Models.Smoking_model", b =>
+                {
+                    b.Navigation("Men_model");
+
+                    b.Navigation("Women_model");
+                });
+
+            modelBuilder.Entity("Foundation.Models.Zodiac_sign_model", b =>
                 {
                     b.Navigation("Men_model");
 
