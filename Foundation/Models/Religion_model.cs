@@ -5,9 +5,9 @@ namespace Foundation.Models;
 [Table("Religion")]
 public class Religion_model
 {
-
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("religion_id")]
-    public byte Religion_modelId { get; set; }
+    public int Religion_modelId { get; set; }
 
     [Column("type")]
     [MaxLength(20)]

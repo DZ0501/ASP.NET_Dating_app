@@ -5,9 +5,9 @@ namespace Foundation.Models;
 [Table("Pet")]
 public class Pet_model
 {
-
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("pet_type_id")]
-    public byte Pet_modelId { get; set; }
+    public int Pet_modelId { get; set; }
 
     [Column("type")]
     [MaxLength(20)]

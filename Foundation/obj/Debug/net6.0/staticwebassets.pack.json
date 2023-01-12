@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\S\\source\\repos\\ASP.NET_Dating_app\\Foundation\\wwwroot\\floating_heart.gif",
+      "PackagePath": "staticwebassets\\floating_heart.gif"
+    },
+    {
+      "Id": "C:\\Users\\S\\source\\repos\\ASP.NET_Dating_app\\Foundation\\wwwroot\\floating_heart.mp4",
+      "PackagePath": "staticwebassets\\floating_heart.mp4"
+    },
+    {
       "Id": "C:\\Users\\S\\source\\repos\\ASP.NET_Dating_app\\Foundation\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

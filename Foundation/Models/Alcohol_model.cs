@@ -5,9 +5,9 @@ namespace Foundation.Models;
 [Table("Alcohol")]
 public class Alcohol_model
 {
-
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("alcohol_id")]
-    public byte Alcohol_modelId { get; set; }
+    public int Alcohol_modelId { get; set; }
 
     [Column("type")]
     [MaxLength(20)]

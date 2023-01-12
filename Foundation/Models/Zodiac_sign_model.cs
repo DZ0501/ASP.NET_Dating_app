@@ -5,9 +5,9 @@ namespace Foundation.Models;
 [Table("Zodiac_sign")]
 public class Zodiac_sign_model
 {
-
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("zodiac_sign_id")]
-    public byte Zodiac_sign_modelId { get; set; }
+    public int Zodiac_sign_modelId { get; set; }
 
     [Column("type")]
     [MaxLength(20)]

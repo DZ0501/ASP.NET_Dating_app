@@ -5,9 +5,9 @@ namespace Foundation.Models;
 [Table("Education")]
 public class Education_model
 {
-
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("education_id")]
-    public byte Education_modelId { get; set; }
+    public int Education_modelId { get; set; }
 
     [Column("type")]
     [MaxLength(20)]

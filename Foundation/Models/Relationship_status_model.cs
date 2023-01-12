@@ -5,9 +5,9 @@ namespace Foundation.Models;
 [Table("Relationship_status")]
 public class Relationship_status_model
 {
-
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("relationship_status_id")]
-    public byte Relationship_status_modelId { get; set; }
+    public int Relationship_status_modelId { get; set; }
 
     [Column("type")]
     [MaxLength(20)]

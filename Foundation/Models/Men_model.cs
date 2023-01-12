@@ -29,24 +29,24 @@ public class Men_model
     [Column("localization", Order = 4)]
     [StringLength(30)]
     public string Localization { get; set; }
-    
+
     [ForeignKey(nameof(Interest_first_model)), Column("interest_1_id", Order = 5)]
     [StringLength(3)]
-    public byte? InterestFirstId { get; set; }
+    public int? InterestFirstId { get; set; }
 
     [ForeignKey(nameof(Interest_second_model)), Column("interest_2_id", Order = 6)]
     [StringLength(3)]
-    public byte? InterestSecondId { get; set; }
+    public int? InterestSecondId { get; set; }
 
     [ForeignKey(nameof(Interest_third_model)), Column("interest_3_id", Order = 7)]
     [StringLength(3)]
-    public byte? InterestThirdId { get; set; }
+    public int? InterestThirdId { get; set; }
 
     [Required]
     [ForeignKey("Relationship_status_model")]
     [Column("relationship_status_id")]
     [StringLength(3)]
-    public byte RelationshipStatusId { get; set; }
+    public int RelationshipStatusId { get; set; }
 
     [ForeignKey("Business_model")]
     [Column("business_id")]
@@ -57,13 +57,13 @@ public class Men_model
     [ForeignKey("Zodiac_sign_model")]
     [Column("zodiac_sign_id")]
     [StringLength(3)]
-    public byte ZodiacSignId { get; set; }
+    public int ZodiacSignId { get; set; }
 
     [Required]
     [ForeignKey("Education_model")]
     [Column("education_id")]
     [StringLength(3)]
-    public byte EducationId { get; set; }
+    public int EducationId { get; set; }
 
     [Column("pet_name")]
     [StringLength(30)]
@@ -72,25 +72,25 @@ public class Men_model
     [Column("pet_type_id")]
     [ForeignKey("Pet_model")]
     [StringLength(2)]
-    public byte? PetTypeId { get; set; }
+    public int? PetTypeId { get; set; }
 
     [Required]
     [ForeignKey("Religion_model")]
     [Column("religion_id")]
     [StringLength(2)]
-    public byte ReligionId { get; set; }
+    public int ReligionId { get; set; }
 
     [Required]
     [ForeignKey("Alcohol_model")]
     [Column("alcohol_id")]
     [StringLength(2)]
-    public byte AlcoholId { get; set; }
+    public int AlcoholId { get; set; }
 
     [Required]
     [ForeignKey("Smoking_model")]
     [Column("smoking_id")]
     [StringLength(2)]
-    public byte SmokingId { get; set; }
+    public int SmokingId { get; set; }
 
     public virtual Business_model Business_model { get; set; }
     public virtual Alcohol_model Alcohol_model { get; set; }

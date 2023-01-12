@@ -5,9 +5,9 @@ namespace Foundation.Models;
 [Table("Interest")]
 public class Interest_model
 {
-
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("interest_id")]
-    public byte Interest_modelId { get; set; }
+    public int Interest_modelId { get; set; }
 
     [Column("type")]
     [MaxLength(20)]
