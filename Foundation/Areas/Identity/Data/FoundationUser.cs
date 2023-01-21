@@ -9,5 +9,12 @@ namespace Foundation.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the FoundationUser class
 public class FoundationUser : IdentityUser
 {
+
 }
 
+/*
+public class FoundationRole: IdentityRole
+{
+    public string RoleName { get; set;}
+}
+*/

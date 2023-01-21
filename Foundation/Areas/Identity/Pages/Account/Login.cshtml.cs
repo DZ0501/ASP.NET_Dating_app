@@ -126,13 +126,16 @@ namespace Foundation.Areas.Identity.Pages.Account
                 {
                     var claims = new Claim[]
                     {
-                        new Claim("amr", "pwd")
+                        new Claim("amr", "pwd"),
+                        new Claim("authorized", "1")
                     };
 
+                    //var roles = await _signInManager.UserManager.GetRolesAsync(user);
+                  
                     await _signInManager.SignInWithClaimsAsync(user, Input.RememberMe, claims);
 
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    return Redirect("/Restricted/Restricted_1");
                 }
                 if (result.Succeeded)
                 {

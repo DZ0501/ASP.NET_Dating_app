@@ -14,8 +14,16 @@ builder.Services.AddDbContext<FoundationContext>(
 builder.Services.AddDefaultIdentity<FoundationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<FoundationContext>();
 
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+#region Authorization
+
+AddAuthorizationPolicies(builder.Services);
+
+#endregion
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -40,3 +48,11 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+void AddAuthorizationPolicies(IServiceCollection services)
+{
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("authorized_only", policy => policy.RequireClaim("authorized"));
+    });
+}

@@ -10,6 +10,7 @@ namespace Foundation.Data;
 public class FoundationContext : IdentityDbContext<FoundationUser>
 {
 
+
     public DbSet<Business_model> Business { get; set; }
     public DbSet<Men_model> Men { get; set; }
     public DbSet<Women_model> Women { get; set; }
