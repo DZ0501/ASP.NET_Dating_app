@@ -30,6 +30,7 @@ namespace Foundation.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<FoundationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        
 
         public RegisterModel(
             UserManager<FoundationUser> userManager,
@@ -123,6 +124,14 @@ namespace Foundation.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
+                    /*
+                    var defaultrole = _roleManager.FindByNameAsync("Default").Result;
+
+                    if (defaultrole != null)
+                    {
+                        IdentityResult roleresult = await _userManager.AddToRoleAsync(user, defaultrole.Name);
+                    }
+                    */
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);

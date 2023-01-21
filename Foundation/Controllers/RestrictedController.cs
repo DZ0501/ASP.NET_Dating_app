@@ -5,16 +5,10 @@ using System.Diagnostics;
 
 namespace Foundation.Controllers
 {
-    [Authorize]
+    
     public class RestrictedController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public RestrictedController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        [Authorize(Policy = "authorized_only")]
         public IActionResult Restricted_1()
         {
             return View();
