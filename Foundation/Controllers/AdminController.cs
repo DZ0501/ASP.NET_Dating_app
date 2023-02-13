@@ -2,39 +2,69 @@
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using Foundation.Areas.Identity.Data;
+using Foundation.Models;
+using System;
 
 namespace Foundation.Controllers
 {
     public class AdminController : Controller
     {
-        private RoleManager<IdentityRole> roleManager;
-        public AdminController(RoleManager<IdentityRole> roleMgr)
+
+        private readonly IPersonService _personService;
+        private readonly RoleManager<IdentityRole> roleManager;
+
+        [ActivatorUtilitiesConstructor]
+        public AdminController(FoundationContext context, IPersonService personService)
         {
-            roleManager = roleMgr;
+            _personService = personService;
+        }
+        public IActionResult Index()
+        {
+            return View(_personService.FindAll());
         }
 
-        public ViewResult Index() => View(roleManager.Roles);
+        
 
-        private void Errors(IdentityResult result)
+        public AdminController(RoleManager<IdentityRole> roleManager)
         {
-            foreach (IdentityError error in result.Errors)
-                ModelState.AddModelError("", error.Description);
+            this.roleManager = roleManager;
         }
 
-        public IActionResult Create() => View();
+        [HttpGet]
+        public IActionResult CreateRole()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Required] string name)
+        public async Task<IActionResult> CreateRole(CreateRole_model model)
         {
             if (ModelState.IsValid)
             {
-                IdentityResult result = await roleManager.CreateAsync(new IdentityRole(name));
+                // We just need to specify a unique role name to create a new role
+                IdentityRole identityRole = new IdentityRole
+                {
+                    Name = model.RoleName
+                };
+
+                // Saves the role in the underlying AspNetRoles table
+                IdentityResult result = await roleManager.CreateAsync(identityRole);
+
                 if (result.Succeeded)
-                    return RedirectToAction("Index");
-                else
-                    Errors(result);
+                {
+                    return RedirectToAction("index", "admin");
+                }
+
+                foreach (IdentityError error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
             }
-            return View(name);
+
+            return View(model);
+
         }
     }
 }
+
+

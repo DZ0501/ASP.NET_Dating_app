@@ -135,7 +135,14 @@ namespace Foundation.Areas.Identity.Pages.Account
                     await _signInManager.SignInWithClaimsAsync(user, Input.RememberMe, claims);
 
                     _logger.LogInformation("User logged in.");
-                    return Redirect("/Restricted/Restricted_1");
+                    
+                    if (user.UserName == "admin@wp.pl")
+                    {
+                        return RedirectToAction("index", "Admin");
+                    }
+                    else
+
+                    return RedirectToAction("index", "home");
                 }
                 if (result.Succeeded)
                 {
