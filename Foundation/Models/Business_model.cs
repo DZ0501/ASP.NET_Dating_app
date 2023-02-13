@@ -35,8 +35,7 @@ public class Business_model
     [StringLength(70)]
     public string Address { get; set; }
 
-    public virtual ICollection<Men_model> Men_model { get; set; }
-    public virtual ICollection<Women_model> Women_model { get; set; }
+    public virtual ICollection<Person_model> Person_model { get; set; }
 
 
 }

@@ -1,58 +1,33 @@
-using Foundation.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using Foundation.Data;
-using Foundation.Areas.Identity.Data;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Foundation.Areas.Identity.Data;
 
-var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("FoundationContextConnection") ?? throw new InvalidOperationException("Connection string 'FoundationContextConnection' not found.");
-
-builder.Services.AddDbContext<FoundationContext>(
-    options => options.UseSqlServer(builder.Configuration["Data:Connection"]));
-
-builder.Services.AddDefaultIdentity<FoundationUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<FoundationContext>();
-
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-
-#region Authorization
-
-AddAuthorizationPolicies(builder.Services);
-
-#endregion
-
-var app = builder.Build();
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+namespace Foundation
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-app.UseAuthentication();;
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapRazorPages();
-
-app.Run();
-
-void AddAuthorizationPolicies(IServiceCollection services)
-{
-    services.AddAuthorization(options =>
+    public class Program
     {
-        options.AddPolicy("authorized_only", policy => policy.RequireClaim("authorized"));
-    });
+        public static async Task Main(string[] args)
+        {
+            var host = CreateHostBuilder(args).Build();
+            using (var scope = host.Services.CreateScope())
+            {
+               await DbInitializer.Initialize(scope.ServiceProvider);
+            }
+            host.Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
 }

@@ -2,43 +2,47 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Foundation.Models;
-[Table("Women")]
-public class Women_model
+[Table("Person")]
+public class Person_model
 {
     //[Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    [Column("men_id", Order = 0)]
-    public int Women_modelId { get; set; }
+    [Column("person_id", Order = 0)]
+    public int Person_modelId { get; set; }
+
+    [Column("gender", Order = 1)]
+    [StringLength(1)]
+    public char Gender { get; set; }
 
     [Required]
-    [Column("first_name", Order = 1)]
+    [Column("first_name", Order = 2)]
     [StringLength(30)]
     public string FirstName { get; set; }
 
     [Required]
-    [Column("last_name", Order = 2)]
+    [Column("last_name", Order = 3)]
     [StringLength(20)]
     public string LastName { get; set; }
 
     [Required]
-    [Column("age", Order = 3)]
+    [Column("age", Order = 4)]
     [StringLength(3)]
     public int Age { get; set; }
 
     [Required]
-    [Column("localization", Order = 4)]
+    [Column("localization", Order = 5)]
     [StringLength(30)]
     public string Localization { get; set; }
 
-    [ForeignKey(nameof(Interest_first_model)), Column("interest_1_id", Order = 5)]
+    [ForeignKey(nameof(Interest_first_model)), Column("interest_1_id", Order = 6)]
     [StringLength(3)]
     public int? InterestFirstId { get; set; }
 
-    [ForeignKey(nameof(Interest_second_model)), Column("interest_2_id", Order = 6)]
+    [ForeignKey(nameof(Interest_second_model)), Column("interest_2_id", Order = 7)]
     [StringLength(3)]
     public int? InterestSecondId { get; set; }
 
-    [ForeignKey(nameof(Interest_third_model)), Column("interest_3_id", Order = 7)]
+    [ForeignKey(nameof(Interest_third_model)), Column("interest_3_id", Order = 8)]
     [StringLength(3)]
     public int? InterestThirdId { get; set; }
 

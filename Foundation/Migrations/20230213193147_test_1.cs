@@ -280,11 +280,12 @@ namespace Foundation.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Men",
+                name: "Person",
                 columns: table => new
                 {
-                    menid = table.Column<int>(name: "men_id", type: "int", nullable: false)
+                    personid = table.Column<int>(name: "person_id", type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    gender = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
                     firstname = table.Column<string>(name: "first_name", type: "nvarchar(30)", maxLength: 30, nullable: false),
                     lastname = table.Column<string>(name: "last_name", type: "nvarchar(20)", maxLength: 20, nullable: false),
                     age = table.Column<int>(type: "int", maxLength: 3, nullable: false),
@@ -304,153 +305,64 @@ namespace Foundation.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Men", x => x.menid);
+                    table.PrimaryKey("PK_Person", x => x.personid);
                     table.ForeignKey(
-                        name: "FK_Men_Alcohol_alcohol_id",
+                        name: "FK_Person_Alcohol_alcohol_id",
                         column: x => x.alcoholid,
                         principalTable: "Alcohol",
                         principalColumn: "alcohol_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Men_Business_business_id",
+                        name: "FK_Person_Business_business_id",
                         column: x => x.businessid,
                         principalTable: "Business",
                         principalColumn: "business_id");
                     table.ForeignKey(
-                        name: "FK_Men_Education_education_id",
+                        name: "FK_Person_Education_education_id",
                         column: x => x.educationid,
                         principalTable: "Education",
                         principalColumn: "education_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Men_Interest_interest_1_id",
+                        name: "FK_Person_Interest_interest_1_id",
                         column: x => x.interest1id,
                         principalTable: "Interest",
                         principalColumn: "interest_id");
                     table.ForeignKey(
-                        name: "FK_Men_Interest_interest_2_id",
+                        name: "FK_Person_Interest_interest_2_id",
                         column: x => x.interest2id,
                         principalTable: "Interest",
                         principalColumn: "interest_id");
                     table.ForeignKey(
-                        name: "FK_Men_Interest_interest_3_id",
+                        name: "FK_Person_Interest_interest_3_id",
                         column: x => x.interest3id,
                         principalTable: "Interest",
                         principalColumn: "interest_id");
                     table.ForeignKey(
-                        name: "FK_Men_Pet_pet_type_id",
+                        name: "FK_Person_Pet_pet_type_id",
                         column: x => x.pettypeid,
                         principalTable: "Pet",
                         principalColumn: "pet_type_id");
                     table.ForeignKey(
-                        name: "FK_Men_Relationship_status_relationship_status_id",
+                        name: "FK_Person_Relationship_status_relationship_status_id",
                         column: x => x.relationshipstatusid,
                         principalTable: "Relationship_status",
                         principalColumn: "relationship_status_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Men_Religion_religion_id",
+                        name: "FK_Person_Religion_religion_id",
                         column: x => x.religionid,
                         principalTable: "Religion",
                         principalColumn: "religion_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Men_Smoking_smoking_id",
+                        name: "FK_Person_Smoking_smoking_id",
                         column: x => x.smokingid,
                         principalTable: "Smoking",
                         principalColumn: "smoking_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Men_Zodiac_sign_zodiac_sign_id",
-                        column: x => x.zodiacsignid,
-                        principalTable: "Zodiac_sign",
-                        principalColumn: "zodiac_sign_id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Women",
-                columns: table => new
-                {
-                    menid = table.Column<int>(name: "men_id", type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    firstname = table.Column<string>(name: "first_name", type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    lastname = table.Column<string>(name: "last_name", type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    age = table.Column<int>(type: "int", maxLength: 3, nullable: false),
-                    localization = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    interest1id = table.Column<int>(name: "interest_1_id", type: "int", maxLength: 3, nullable: true),
-                    interest2id = table.Column<int>(name: "interest_2_id", type: "int", maxLength: 3, nullable: true),
-                    interest3id = table.Column<int>(name: "interest_3_id", type: "int", maxLength: 3, nullable: true),
-                    relationshipstatusid = table.Column<int>(name: "relationship_status_id", type: "int", maxLength: 3, nullable: false),
-                    businessid = table.Column<int>(name: "business_id", type: "int", maxLength: 2, nullable: true),
-                    zodiacsignid = table.Column<int>(name: "zodiac_sign_id", type: "int", maxLength: 3, nullable: false),
-                    educationid = table.Column<int>(name: "education_id", type: "int", maxLength: 3, nullable: false),
-                    petname = table.Column<string>(name: "pet_name", type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    pettypeid = table.Column<int>(name: "pet_type_id", type: "int", maxLength: 2, nullable: true),
-                    religionid = table.Column<int>(name: "religion_id", type: "int", maxLength: 2, nullable: false),
-                    alcoholid = table.Column<int>(name: "alcohol_id", type: "int", maxLength: 2, nullable: false),
-                    smokingid = table.Column<int>(name: "smoking_id", type: "int", maxLength: 2, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Women", x => x.menid);
-                    table.ForeignKey(
-                        name: "FK_Women_Alcohol_alcohol_id",
-                        column: x => x.alcoholid,
-                        principalTable: "Alcohol",
-                        principalColumn: "alcohol_id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Women_Business_business_id",
-                        column: x => x.businessid,
-                        principalTable: "Business",
-                        principalColumn: "business_id");
-                    table.ForeignKey(
-                        name: "FK_Women_Education_education_id",
-                        column: x => x.educationid,
-                        principalTable: "Education",
-                        principalColumn: "education_id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Women_Interest_interest_1_id",
-                        column: x => x.interest1id,
-                        principalTable: "Interest",
-                        principalColumn: "interest_id");
-                    table.ForeignKey(
-                        name: "FK_Women_Interest_interest_2_id",
-                        column: x => x.interest2id,
-                        principalTable: "Interest",
-                        principalColumn: "interest_id");
-                    table.ForeignKey(
-                        name: "FK_Women_Interest_interest_3_id",
-                        column: x => x.interest3id,
-                        principalTable: "Interest",
-                        principalColumn: "interest_id");
-                    table.ForeignKey(
-                        name: "FK_Women_Pet_pet_type_id",
-                        column: x => x.pettypeid,
-                        principalTable: "Pet",
-                        principalColumn: "pet_type_id");
-                    table.ForeignKey(
-                        name: "FK_Women_Relationship_status_relationship_status_id",
-                        column: x => x.relationshipstatusid,
-                        principalTable: "Relationship_status",
-                        principalColumn: "relationship_status_id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Women_Religion_religion_id",
-                        column: x => x.religionid,
-                        principalTable: "Religion",
-                        principalColumn: "religion_id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Women_Smoking_smoking_id",
-                        column: x => x.smokingid,
-                        principalTable: "Smoking",
-                        principalColumn: "smoking_id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Women_Zodiac_sign_zodiac_sign_id",
+                        name: "FK_Person_Zodiac_sign_zodiac_sign_id",
                         column: x => x.zodiacsignid,
                         principalTable: "Zodiac_sign",
                         principalColumn: "zodiac_sign_id",
@@ -573,27 +485,20 @@ namespace Foundation.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Men",
-                columns: new[] { "men_id", "age", "alcohol_id", "business_id", "education_id", "first_name", "interest_1_id", "interest_2_id", "interest_3_id", "last_name", "localization", "pet_name", "pet_type_id", "relationship_status_id", "religion_id", "smoking_id", "zodiac_sign_id" },
+                table: "Person",
+                columns: new[] { "person_id", "age", "alcohol_id", "business_id", "education_id", "first_name", "gender", "interest_1_id", "interest_2_id", "interest_3_id", "last_name", "localization", "pet_name", "pet_type_id", "relationship_status_id", "religion_id", "smoking_id", "zodiac_sign_id" },
                 values: new object[,]
                 {
-                    { 1, 20, 1, 2, 2, "Paweł", 4, 2, 3, "Urbański", "Kraków", "Dyzio", 2, 1, 1, 1, 3 },
-                    { 2, 25, 3, 4, 3, "Damian", 2, 1, 3, "Jawor", "Wadowice", "Piorun", 1, 1, 1, 4, 1 },
-                    { 3, 21, 1, 2, 2, "Borys", 3, 1, 2, "Pawlak", "Toruń", null, null, 1, 1, 2, 2 },
-                    { 4, 18, 3, null, 1, "Kajetan", 2, 3, 1, "Kowalski", "Nowy Sącz", "Saba", 1, 3, 1, 2, 1 },
-                    { 5, 30, 1, 5, 3, "Marcel", 9, 10, 5, "Bąk", "Warszawa", "Ares", 2, 2, 3, 2, 7 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Women",
-                columns: new[] { "men_id", "age", "alcohol_id", "business_id", "education_id", "first_name", "interest_1_id", "interest_2_id", "interest_3_id", "last_name", "localization", "pet_name", "pet_type_id", "relationship_status_id", "religion_id", "smoking_id", "zodiac_sign_id" },
-                values: new object[,]
-                {
-                    { 1, 20, 1, 2, 2, "Jagoda", 11, 12, 13, "Lis", "Wadowice", "Eliza", 3, 1, 1, 2, 3 },
-                    { 2, 27, 3, 4, 3, "Lara", 2, 1, 3, "Czerwik", "Kraków", "Beza", 2, 1, 1, 4, 1 },
-                    { 3, 23, 1, 2, 2, "Wiktoria", 3, 1, 2, "Zakrzewska", "Warszawa", null, null, 1, 1, 3, 2 },
-                    { 4, 20, 3, null, 1, "Helena", 2, 3, 1, "Pikol", "Nowy Sącz", "Agrest", 1, 3, 2, 2, 1 },
-                    { 5, 32, 3, 1, 1, "Natalia", 2, 3, 1, "Sobczak", "Sandomierz", "Fafik", 1, 3, 2, 2, 1 }
+                    { 1, 20, 1, 2, 2, "Paweł", "m", 4, 2, 3, "Urbański", "Kraków", "Dyzio", 2, 1, 1, 1, 3 },
+                    { 2, 25, 3, 4, 3, "Damian", "m", 2, 1, 3, "Jawor", "Wadowice", "Piorun", 1, 1, 1, 4, 1 },
+                    { 3, 21, 1, 2, 2, "Borys", "m", 3, 1, 2, "Pawlak", "Toruń", null, null, 1, 1, 2, 2 },
+                    { 4, 18, 3, null, 1, "Kajetan", "m", 2, 3, 1, "Kowalski", "Nowy Sącz", "Saba", 1, 3, 1, 2, 1 },
+                    { 5, 30, 1, 5, 3, "Marcel", "m", 9, 10, 5, "Bąk", "Warszawa", "Ares", 2, 2, 3, 2, 7 },
+                    { 6, 20, 1, 2, 2, "Jagoda", "w", 11, 12, 13, "Lis", "Wadowice", "Eliza", 3, 1, 1, 2, 3 },
+                    { 7, 27, 3, 4, 3, "Lara", "w", 2, 1, 3, "Czerwik", "Kraków", "Beza", 2, 1, 1, 4, 1 },
+                    { 8, 23, 1, 2, 2, "Wiktoria", "w", 3, 1, 2, "Zakrzewska", "Warszawa", null, null, 1, 1, 3, 2 },
+                    { 9, 20, 3, null, 1, "Helena", "w", 2, 3, 1, "Pikol", "Nowy Sącz", "Agrest", 1, 3, 2, 2, 1 },
+                    { 10, 32, 3, 1, 1, "Natalia", "w", 2, 3, 1, "Sobczak", "Sandomierz", "Fafik", 1, 3, 2, 2, 1 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -636,113 +541,58 @@ namespace Foundation.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_alcohol_id",
-                table: "Men",
+                name: "IX_Person_alcohol_id",
+                table: "Person",
                 column: "alcohol_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_business_id",
-                table: "Men",
+                name: "IX_Person_business_id",
+                table: "Person",
                 column: "business_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_education_id",
-                table: "Men",
+                name: "IX_Person_education_id",
+                table: "Person",
                 column: "education_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_interest_1_id",
-                table: "Men",
+                name: "IX_Person_interest_1_id",
+                table: "Person",
                 column: "interest_1_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_interest_2_id",
-                table: "Men",
+                name: "IX_Person_interest_2_id",
+                table: "Person",
                 column: "interest_2_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_interest_3_id",
-                table: "Men",
+                name: "IX_Person_interest_3_id",
+                table: "Person",
                 column: "interest_3_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_pet_type_id",
-                table: "Men",
+                name: "IX_Person_pet_type_id",
+                table: "Person",
                 column: "pet_type_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_relationship_status_id",
-                table: "Men",
+                name: "IX_Person_relationship_status_id",
+                table: "Person",
                 column: "relationship_status_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_religion_id",
-                table: "Men",
+                name: "IX_Person_religion_id",
+                table: "Person",
                 column: "religion_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_smoking_id",
-                table: "Men",
+                name: "IX_Person_smoking_id",
+                table: "Person",
                 column: "smoking_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Men_zodiac_sign_id",
-                table: "Men",
-                column: "zodiac_sign_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_alcohol_id",
-                table: "Women",
-                column: "alcohol_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_business_id",
-                table: "Women",
-                column: "business_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_education_id",
-                table: "Women",
-                column: "education_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_interest_1_id",
-                table: "Women",
-                column: "interest_1_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_interest_2_id",
-                table: "Women",
-                column: "interest_2_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_interest_3_id",
-                table: "Women",
-                column: "interest_3_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_pet_type_id",
-                table: "Women",
-                column: "pet_type_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_relationship_status_id",
-                table: "Women",
-                column: "relationship_status_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_religion_id",
-                table: "Women",
-                column: "religion_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_smoking_id",
-                table: "Women",
-                column: "smoking_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Women_zodiac_sign_id",
-                table: "Women",
+                name: "IX_Person_zodiac_sign_id",
+                table: "Person",
                 column: "zodiac_sign_id");
         }
 
@@ -765,10 +615,7 @@ namespace Foundation.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Men");
-
-            migrationBuilder.DropTable(
-                name: "Women");
+                name: "Person");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
