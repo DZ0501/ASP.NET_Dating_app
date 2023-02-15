@@ -1,5 +1,6 @@
 using Foundation.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace lab_8.Models;
 
@@ -69,7 +70,8 @@ public class PersonService_model: IPersonService
 
     public ICollection<Person_model> FindAll()
     {
-        return _context.Person.ToList();
+        var list = _context.Person.Include("Interest_first_model").ToList();
+        return list;    
     }
 
     public ICollection<Person_model> FindByAuthor(Person_model person)

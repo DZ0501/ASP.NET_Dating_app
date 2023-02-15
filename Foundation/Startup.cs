@@ -34,7 +34,7 @@ namespace Foundation
         {
             services.AddDbContext<FoundationContext>(
             options => options.UseSqlServer(Configuration["Data:Connection"]));
-            services.AddDefaultIdentity<FoundationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<FoundationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<FoundationContext>();
 

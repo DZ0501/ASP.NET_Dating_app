@@ -6,10 +6,9 @@ using System.Diagnostics;
 namespace Foundation.Controllers
 {
     
-    public class RestrictedController : Controller
+    public class AuthorizedController : Controller
     {
-        [Authorize(Policy = "authorized_only")]
-        public IActionResult Restricted_1()
+        public IActionResult Index()
         {
             return View();
         }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using Foundation.Areas.Identity.Data;
 using Foundation.Models;
 using System;
+using System.Dynamic;
 
 namespace Foundation.Controllers
 {
@@ -23,7 +24,29 @@ namespace Foundation.Controllers
             return View(_personService.FindAll());
         }
 
-        
+        public IActionResult DeleteUser(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var person = _personService.FindBy(id);
+            return person is null ? NotFound() : View(person);
+        }
+
+        // POST: Book/Delete/5
+        [HttpPost, ActionName("DeleteUser")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            if (_personService.Delete(id))
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return Problem("Trying delete no existing person");
+        }
+
 
         public AdminController(RoleManager<IdentityRole> roleManager)
         {

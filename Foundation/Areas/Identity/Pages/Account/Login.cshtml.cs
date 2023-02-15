@@ -123,17 +123,7 @@ namespace Foundation.Areas.Identity.Pages.Account
 
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
-                {
-                    var claims = new Claim[]
-                    {
-                        new Claim("amr", "pwd"),
-                        new Claim("authorized", "1")
-                    };
-
-                    //var roles = await _signInManager.UserManager.GetRolesAsync(user);
-                  
-                    await _signInManager.SignInWithClaimsAsync(user, Input.RememberMe, claims);
-
+                {               
                     _logger.LogInformation("User logged in.");
                     
                     if (user.UserName == "admin@wp.pl")
@@ -142,12 +132,7 @@ namespace Foundation.Areas.Identity.Pages.Account
                     }
                     else
 
-                    return RedirectToAction("index", "home");
-                }
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    return RedirectToAction("index", "Authorized");
                 }
                 if (result.RequiresTwoFactor)
                 {

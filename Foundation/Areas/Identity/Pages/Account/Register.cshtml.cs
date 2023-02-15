@@ -26,6 +26,7 @@ namespace Foundation.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<FoundationUser> _signInManager;
         private readonly UserManager<FoundationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IUserStore<FoundationUser> _userStore;
         private readonly IUserEmailStore<FoundationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
@@ -34,12 +35,14 @@ namespace Foundation.Areas.Identity.Pages.Account
 
         public RegisterModel(
             UserManager<FoundationUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             IUserStore<FoundationUser> userStore,
             SignInManager<FoundationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
@@ -124,14 +127,14 @@ namespace Foundation.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    /*
-                    var defaultrole = _roleManager.FindByNameAsync("Default").Result;
+                    
+                    var defaultrole = _roleManager.FindByNameAsync("Authorized").Result;
 
                     if (defaultrole != null)
                     {
                         IdentityResult roleresult = await _userManager.AddToRoleAsync(user, defaultrole.Name);
                     }
-                    */
+                    
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);

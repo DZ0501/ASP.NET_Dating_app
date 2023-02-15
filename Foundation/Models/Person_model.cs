@@ -8,6 +8,7 @@ public class Person_model
     //[Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("person_id", Order = 0)]
+    [Display(Name = "Person ID")]
     public int Person_modelId { get; set; }
 
     [Column("gender", Order = 1)]
@@ -16,11 +17,13 @@ public class Person_model
 
     [Required]
     [Column("first_name", Order = 2)]
+    [Display(Name = "First name")]
     [StringLength(30)]
     public string FirstName { get; set; }
 
     [Required]
     [Column("last_name", Order = 3)]
+    [Display(Name = "Last name")]
     [StringLength(20)]
     public string LastName { get; set; }
 
@@ -35,14 +38,17 @@ public class Person_model
     public string Localization { get; set; }
 
     [ForeignKey(nameof(Interest_first_model)), Column("interest_1_id", Order = 6)]
+    [Display(Name = "First interest")]
     [StringLength(3)]
     public int? InterestFirstId { get; set; }
 
     [ForeignKey(nameof(Interest_second_model)), Column("interest_2_id", Order = 7)]
+    [Display(Name = "Second interest")]
     [StringLength(3)]
     public int? InterestSecondId { get; set; }
 
     [ForeignKey(nameof(Interest_third_model)), Column("interest_3_id", Order = 8)]
+    [Display(Name = "Third interest")]
     [StringLength(3)]
     public int? InterestThirdId { get; set; }
 
@@ -70,6 +76,7 @@ public class Person_model
     public int EducationId { get; set; }
 
     [Column("pet_name")]
+    [Display(Name = "Pet name")]
     [StringLength(30)]
     public string? PetName { get; set; }
 
