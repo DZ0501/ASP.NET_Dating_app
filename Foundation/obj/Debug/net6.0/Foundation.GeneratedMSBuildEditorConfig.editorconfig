@@ -52,12 +52,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/S/source/repos/ASP.NET_Dating_app/Foundation/Views/Admin/Index - kopiować.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXggLSBrb3Bpb3dhxIcuY3NodG1s
+[C:/Users/S/source/repos/ASP.NET_Dating_app/Foundation/Views/Admin/DetailsUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGV0YWlsc1VzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/S/source/repos/ASP.NET_Dating_app/Foundation/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/S/source/repos/ASP.NET_Dating_app/Foundation/Views/Authorized/DetailsUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplZFxEZXRhaWxzVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/S/source/repos/ASP.NET_Dating_app/Foundation/Views/Home/Index.cshtml]
@@ -79,6 +83,14 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/S/source/repos/ASP.NET_Dating_app/Foundation/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/S/source/repos/ASP.NET_Dating_app/Foundation/Views/Authorized/Find.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplZFxGaW5kLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-6wect75y69
+
+[C:/Users/S/source/repos/ASP.NET_Dating_app/Foundation/Views/Authorized/FindMatch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplZFxGaW5kTWF0Y2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5lch4r0ki9
 
 [C:/Users/S/source/repos/ASP.NET_Dating_app/Foundation/Views/Authorized/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplZFxJbmRleC5jc2h0bWw=

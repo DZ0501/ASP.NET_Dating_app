@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Foundation.Migrations
 {
     [DbContext(typeof(FoundationContext))]
-    [Migration("20230215192441_test_1")]
+    [Migration("20230216201448_test_1")]
     partial class test1
     {
         /// <inheritdoc />
@@ -409,19 +409,16 @@ namespace Foundation.Migrations
                         .HasColumnOrder(1);
 
                     b.Property<int?>("InterestFirstId")
-                        .HasMaxLength(3)
                         .HasColumnType("int")
                         .HasColumnName("interest_1_id")
                         .HasColumnOrder(6);
 
                     b.Property<int?>("InterestSecondId")
-                        .HasMaxLength(3)
                         .HasColumnType("int")
                         .HasColumnName("interest_2_id")
                         .HasColumnOrder(7);
 
                     b.Property<int?>("InterestThirdId")
-                        .HasMaxLength(3)
                         .HasColumnType("int")
                         .HasColumnName("interest_3_id")
                         .HasColumnOrder(8);

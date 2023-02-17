@@ -16,7 +16,6 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Foundation.Models;
-using lab_8.Models;
 
 namespace Foundation
 {

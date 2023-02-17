@@ -12,12 +12,7 @@ public interface IPersonService
 
     public ICollection<Person_model> FindAll();
 
+    public ICollection<Person_model> FindAllByInterest(int? id);
 
-    /*
-
-    public ICollection<Person_model> FindBySurname(Person_model person);
-
-    public ICollection<Person_model> FindPage(int page, int size);
-    */
 
 }

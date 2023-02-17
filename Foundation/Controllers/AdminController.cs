@@ -5,9 +5,15 @@ using Foundation.Areas.Identity.Data;
 using Foundation.Models;
 using System;
 using System.Dynamic;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Foundation.Controllers
 {
+
+    [Authorize(Roles = "Administrator")]
+
     public class AdminController : Controller
     {
 
@@ -47,6 +53,11 @@ namespace Foundation.Controllers
             return Problem("Trying delete no existing person");
         }
 
+        public IActionResult DetailsUser(int? id)
+        {
+            var person = _personService.FindBy(id);
+            return person is null ? NotFound() : View(person);
+        }
 
         public AdminController(RoleManager<IdentityRole> roleManager)
         {

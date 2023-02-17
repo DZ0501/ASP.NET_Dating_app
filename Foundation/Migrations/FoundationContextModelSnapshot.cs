@@ -406,19 +406,16 @@ namespace Foundation.Migrations
                         .HasColumnOrder(1);
 
                     b.Property<int?>("InterestFirstId")
-                        .HasMaxLength(3)
                         .HasColumnType("int")
                         .HasColumnName("interest_1_id")
                         .HasColumnOrder(6);
 
                     b.Property<int?>("InterestSecondId")
-                        .HasMaxLength(3)
                         .HasColumnType("int")
                         .HasColumnName("interest_2_id")
                         .HasColumnOrder(7);
 
                     b.Property<int?>("InterestThirdId")
-                        .HasMaxLength(3)
                         .HasColumnType("int")
                         .HasColumnName("interest_3_id")
                         .HasColumnOrder(8);

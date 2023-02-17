@@ -2,7 +2,7 @@ using Foundation.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace lab_8.Models;
+namespace Foundation.Models;
 
 public class PersonService_model: IPersonService
 {
@@ -65,18 +65,57 @@ public class PersonService_model: IPersonService
 
     public Person_model? FindBy(int? id)
     {
-        return id is null ? null : _context.Person.Find(id);
+        
+        return id is null ? null : _context.Person.Include("Interest_first_model")
+            .Include("Interest_second_model")
+            .Include("Interest_third_model")
+            .Include("Relationship_status_model")
+            .Include("Business_model")
+            .Include("Zodiac_sign_model")
+            .Include("Education_model")
+            .Include("Pet_model")
+            .Include("Religion_model")
+            .Include("Alcohol_model")
+            .Include("Smoking_model")
+            .FirstOrDefault(x => x.Person_modelId == id);
+    }
+
+    public ICollection<Person_model> FindAllByInterest(int? id)
+    {
+        var list = _context.Person.Include("Interest_first_model")
+            .Include("Interest_second_model")
+            .Include("Interest_third_model")
+            .Include("Relationship_status_model")
+            .Include("Business_model")
+            .Include("Zodiac_sign_model")
+            .Include("Education_model")
+            .Include("Pet_model")
+            .Include("Religion_model")
+            .Include("Alcohol_model")
+            .Include("Smoking_model")
+            .Where(x => x.Interest_first_model.Interest_modelId == id)
+
+            .ToList();
+
+        return list;
     }
 
     public ICollection<Person_model> FindAll()
     {
-        var list = _context.Person.Include("Interest_first_model").ToList();
-        return list;    
-    }
+        var list = _context.Person.Include("Interest_first_model")
+            .Include("Interest_second_model")
+            .Include("Interest_third_model")
+            .Include("Relationship_status_model")
+            .Include("Business_model")
+            .Include("Zodiac_sign_model")
+            .Include("Education_model")
+            .Include("Pet_model")
+            .Include("Religion_model")
+            .Include("Alcohol_model")
+            .Include("Smoking_model")
+            .ToList();
 
-    public ICollection<Person_model> FindByAuthor(Person_model person)
-    {   
-        throw new NotImplementedException();
+        return list;    
     }
 
     public void SaveChanges()

@@ -596,3 +596,5 @@ C:\Users\S\source\repos\ASP.NET_Dating_app\Foundation\obj\Debug\net6.0\scopedcss
 C:\Users\S\source\repos\ASP.NET_Dating_app\Foundation\obj\Debug\net6.0\scopedcss\Views\Shared\_AuthLayout.cshtml.rz.scp.css
 C:\Users\S\source\repos\ASP.NET_Dating_app\Foundation\obj\Debug\net6.0\scopedcss\Views\Shared\_AdminLayout.cshtml.rz.scp.css
 C:\Users\S\source\repos\ASP.NET_Dating_app\Foundation\obj\Debug\net6.0\scopedcss\Views\Authorized\Index.cshtml.rz.scp.css
+C:\Users\S\source\repos\ASP.NET_Dating_app\Foundation\obj\Debug\net6.0\scopedcss\Views\Authorized\FindMatch.cshtml.rz.scp.css
+C:\Users\S\source\repos\ASP.NET_Dating_app\Foundation\obj\Debug\net6.0\scopedcss\Views\Authorized\Find.cshtml.rz.scp.css

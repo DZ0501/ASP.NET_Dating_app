@@ -39,38 +39,39 @@ public class Person_model
 
     [ForeignKey(nameof(Interest_first_model)), Column("interest_1_id", Order = 6)]
     [Display(Name = "First interest")]
-    [StringLength(3)]
     public int? InterestFirstId { get; set; }
 
     [ForeignKey(nameof(Interest_second_model)), Column("interest_2_id", Order = 7)]
     [Display(Name = "Second interest")]
-    [StringLength(3)]
     public int? InterestSecondId { get; set; }
 
     [ForeignKey(nameof(Interest_third_model)), Column("interest_3_id", Order = 8)]
     [Display(Name = "Third interest")]
-    [StringLength(3)]
     public int? InterestThirdId { get; set; }
 
     [Required]
     [ForeignKey("Relationship_status_model")]
+    [Display(Name = "Relationship status")]
     [Column("relationship_status_id")]
     [StringLength(3)]
     public int RelationshipStatusId { get; set; }
 
     [ForeignKey("Business_model")]
+    [Display(Name = "Business name")]
     [Column("business_id")]
     [StringLength(2)]
     public int? BusinessId { get; set; }
 
     [Required]
     [ForeignKey("Zodiac_sign_model")]
+    [Display(Name = "Zodiac sign")]
     [Column("zodiac_sign_id")]
     [StringLength(3)]
     public int ZodiacSignId { get; set; }
 
     [Required]
     [ForeignKey("Education_model")]
+    [Display(Name = "Education type")]
     [Column("education_id")]
     [StringLength(3)]
     public int EducationId { get; set; }
@@ -87,18 +88,21 @@ public class Person_model
 
     [Required]
     [ForeignKey("Religion_model")]
+    [Display(Name = "Religion")]
     [Column("religion_id")]
     [StringLength(2)]
     public int ReligionId { get; set; }
 
     [Required]
     [ForeignKey("Alcohol_model")]
+    [Display(Name = "Alcohol type")]
     [Column("alcohol_id")]
     [StringLength(2)]
     public int AlcoholId { get; set; }
 
     [Required]
     [ForeignKey("Smoking_model")]
+    [Display(Name = "Smoking type")]
     [Column("smoking_id")]
     [StringLength(2)]
     public int SmokingId { get; set; }
