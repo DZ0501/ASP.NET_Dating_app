@@ -20,10 +20,10 @@ namespace Foundation.Controllers
         private readonly IPersonService _personService;
         private readonly RoleManager<IdentityRole> roleManager;
 
-        [ActivatorUtilitiesConstructor]
-        public AdminController(FoundationContext context, IPersonService personService)
+        public AdminController(FoundationContext context, IPersonService personService, RoleManager<IdentityRole> roleManager)
         {
             _personService = personService;
+            this.roleManager = roleManager;
         }
         public IActionResult Index()
         {
@@ -57,11 +57,6 @@ namespace Foundation.Controllers
         {
             var person = _personService.FindBy(id);
             return person is null ? NotFound() : View(person);
-        }
-
-        public AdminController(RoleManager<IdentityRole> roleManager)
-        {
-            this.roleManager = roleManager;
         }
 
         [HttpGet]
