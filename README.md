@@ -2,6 +2,7 @@
 
 Requirements: <br>
 Visual Studio 2022
+Microsoft SQL Server Management Studio (I was using v18.10)
 
 Instructions:
 1. Clone repository.
